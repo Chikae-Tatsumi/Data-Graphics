@@ -12,5 +12,4 @@ fit <- lm(z ~ x + y)
 coefs <- coef(fit)
 planes3d(coefs[2], coefs[3], -1, coefs[1], col="blue", alpha=0.5) #Draw the planar
 
-
 snapshot3d("3D.png")
