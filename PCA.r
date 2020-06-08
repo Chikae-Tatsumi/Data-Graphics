@@ -1,21 +1,27 @@
-library(lmf)
 library(maptools)
+library(ggplot2)
+library(ggrepel)
 
+# Import files
 setwd("~/R/Analysis/1_Test")
 METADATA <- read.csv(file="metadata.csv",header=T)
-DESIGN <- read.csv("experimental_design.csv")
+
+# Make dataset
 pilots.pca <- prcomp(na.omit(METADATA),scale=TRUE, center = TRUE)  #standardized
-biplot(pilots.pca)
+biplot(pilots.pca) # Check the result
+loading <- sweep(pilots.pca$rotation,MARGIN=2,pilots.pca$sdev,FUN="*")
+loading <- data.frame(loading)
 
-loading=sweep(pilots.pca$rotation,MARGIN=2,pilots.pca$sdev,FUN="*")
-par(las=1)
-plot(x=NULL,type="n",xlab="PC1",ylab="PC2",xlim=c(-1,1),ylim=c(-1,1),xaxs="i",yaxs="i",xaxt="n",yaxt="n",bty="n")
-axis(side=1,at=seq(-1,1,0.2),tck=1.0,lty="dotted",lwd=0.5,col="#dddddd",labels=expression(-1.0,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1.0))
-axis(side=2,at=seq(-1,1,0.2),tck=1.0,lty="dotted",lwd=0.5,col="#dddddd",labels=expression(-1.0,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1.0))
-for(i in 1:nrow(loading))
-{arrows(0,0,loading[i,1],loading[i,2],col="black",length=0.1)}
-pointLabel(x=loading[,1],y=loading[,2],labels=rownames(loading),cex=1.5)
-box(bty="l")
+# ggplot
+ggplot(loading) + 
+geom_segment(aes(xend=PC1, yend=PC2), x=0, y=0, arrow=arrow(length = unit(0.5,"cm"))) + 
+geom_text_repel(aes(x=PC1, y=PC2, label=rownames(loading)),  size=8, color='black') +
+xlim(-1,1) + 
+ylim(-1,1) +
+theme_classic()+
+theme(text=element_text(size=14,color="black"),
+axis.text=element_text(size=12,color="black"))+
+coord_fixed()
 
-dev.copy(pdf,file="PCA.pdf")
-dev.off()
+# Save
+ggsave(file = "PCA.png")
