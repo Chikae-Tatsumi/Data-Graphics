@@ -61,7 +61,7 @@ percent.t <- t (percent)
 nmds <-metaMDS(percent.t, trace=F, distance="bray")
 env.fit<-envfit(nmds, METADATA, perm=10000, na.rm=TRUE)
 kingdom.fit<-envfit(nmds, kingdom.t, perm=10000)
-phylum.fit<-envfit(nmds, major.class.t, perm=10000)
+phylum.fit<-envfit(nmds, major.phylum.t, perm=10000)
 class.fit<-envfit(nmds, major.class.t, perm=10000)
 
 # Make dataset
