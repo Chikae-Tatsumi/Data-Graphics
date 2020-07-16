@@ -52,7 +52,7 @@ rowMeans <- rowMeans(class.ag)
 class.ag <- cbind(class.ag,rowMeans)
 major.class <- class.ag[class.ag[,"rowMeans"] > 1,]
 major.class <- major.class[order(major.class$rowMeans,decreasing = T),]
-minor.class <- agrregated[agrregated[,"rowMeans"] < 1,]
+minor.class <- class.ag[class.ag[,"rowMeans"] < 1,]
 other.class <- colSums (minor.class)
 selected.class <- rbind (major.class, other.class) 
 rownames (selected.class)[nrow(selected.class)] <- paste ("Other", rownames(more.major.phylum)[i],sep="_")
