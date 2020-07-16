@@ -54,6 +54,7 @@ a.minor.phylum <- a.phylum.ag[a.phylum.ag[,"rowMeans"] < 1,]
 a.others <- colSums (a.minor.phylum)
 a.selected.phylum <- rbind (a.major.phylum, a.others) 
 rownames (a.selected.phylum)[nrow(a.selected.phylum)] <- "Other_Archaea"
+colnames (a.selected.phylum) <- colnames (a.phylum.ag)
 a.selected.phylum <- a.selected.phylum[,-ncol(a.selected.phylum)] 
 
 # >1% class in >10% class tables
