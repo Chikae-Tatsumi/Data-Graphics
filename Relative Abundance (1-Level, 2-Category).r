@@ -24,7 +24,7 @@ rowMeans <- rowMeans(agrregated)
 agrregated <- cbind(agrregated,rowMeans)
 
 # Main + <1% abund 
-major <- agrregated[agrregated[,"rowMeans"] > 1,]
+majors <- agrregated[agrregated[,"rowMeans"] > 1,]
 majors <- majors[order(majors$rowMeans,decreasing = T),]
 minors <- agrregated[agrregated[,"rowMeans"] < 1,]
 Others <- colSums (minors)
