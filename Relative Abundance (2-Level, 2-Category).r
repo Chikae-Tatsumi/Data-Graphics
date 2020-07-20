@@ -80,7 +80,7 @@ data <- data.frame()
 for (i in 3:(ncol(table))){
 Abundance <-table[,i]
 Example <- colnames (table)[i]
-bind <- cbind(FactorA, FactorB, Abundance, Example) 
+bind <- cbind(FactorA, FactorB, Abundance, Example)  # Change FactorA and FactorB --> the category you compare
 data<-rbind (data,bind)}
 data$Abundance <- as.numeric(as.character(data$Abundance))
 
