@@ -10,20 +10,16 @@ ASV <- funguild.table [,1:(ncol(funguild.table)-10)]
 guild <- funguild.table [,(ncol(funguild.table)-9):ncol(funguild.table)] 
 percent <- ASV / mean(colSums(ASV)) *100
 
-aggregated <- aggregate(percent, by=list(guild$Guild),FUN = sum,na.rm=F)  # Change "Guild" --> "Trophic_mode"if needed
+aggregated <- aggregate(percent, by=list(guild$Guild),FUN = sum,na.rm=F)  # Change "Guild" --> "Trophic.Mode"if needed
 row.names(aggregated)<-aggregated[,1]
 aggregated <- aggregated[,-1]
 aggregated <- data.frame(aggregated)
-rowMeans <- rowMeans(aggregated)
-aggregated <- cbind(aggregated,rowMeans)
 
 rows <- grep ("Ectomycorrhizal", rownames (aggregated)) # Change "Ectomycorrhizal" if needed
 subset <- aggregated[rows,]
 subset.t <- t(subset)
 data <- data.frame(rowSums (subset.t))
 colnames (data) [1] <- "Ectomycorrhizal"  # Change "Ectomycorrhizal" if needed
-data [nrow(data),1] <- NA
-data <- na.omit (data)
 data <- cbind (data, DESIGN)
 
 ggplot(data)+
