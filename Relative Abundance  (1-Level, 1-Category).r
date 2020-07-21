@@ -34,6 +34,7 @@ selected <- selected[,-ncol(selected)]
 
 # Make dataset
 selected.t <- t (selected)
+write.csv(selected.t, "aggregated.family.table.csv") #Change
 bind <- cbind (selected.t, DESIGN)
 table <- aggregate(selected.t, by=list(bind$Group),FUN = mean) # Change Group --> the category you compare
 Group <- as.character(table[,1])
