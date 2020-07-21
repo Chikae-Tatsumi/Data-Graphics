@@ -1,5 +1,6 @@
 library(tidyverse)
 library (dplyr)
+library (ggplot2)
 
 setwd("~/R/Analysis/1_Test")
 DESIGN <- read.csv("experimental_design.csv",header=T)
