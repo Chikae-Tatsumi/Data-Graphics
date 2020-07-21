@@ -64,8 +64,9 @@ phylum.class.table <- data.frame()
 for (i in 1:nrow(more.major.phylum)){
 phylum.class.table <- rbind(phylum.class.table,selected.class.list[[i]])}
 phylum.class.table <- rbind (phylum.class.table, selected.phylum [((nrow(more.major.phylum)+1):nrow(selected.phylum)),])
-
 selected.t <- t (phylum.class.table)
+write.csv(selected.t, "aggregated.phylum.class.table.csv")
+
 bind <- cbind (selected.t, DESIGN)
 table <- aggregate(selected.t, by=list(bind$Group),FUN = mean) # Change Group --> the category you compare
 Group <- as.character(table[,1])
