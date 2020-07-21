@@ -91,8 +91,9 @@ for (i in 1:nrow(more.major.phylum)){
 phylum.class.table <- rbind(phylum.class.table,selected.class.list[[i]])}
 phylum.class.table <- rbind (phylum.class.table, selected.phylum [((nrow(more.major.phylum)+1):nrow(selected.phylum)),])
 phylum.class.table <- rbind (phylum.class.table, a.phylum.table)
-
 selected.t <- t (phylum.class.table)
+write.csv(selected.t, "aggregated.phylum.class.table.csv")
+
 bind <- cbind (selected.t, DESIGN)
 category <- paste (bind$FactorA, bind$FactorB,sep="&") # Change FactorA and FactorB --> the category you compare
 bind <- cbind (bind, category)
