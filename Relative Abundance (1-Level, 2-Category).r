@@ -34,6 +34,7 @@ selected <- selected[,-ncol(selected)]
 
 # Make dataset
 selected.t <- t (selected)
+write.csv(selected.t, "aggregated.family.table.csv") #Change
 bind <- cbind (selected.t, DESIGN)
 category <- paste (bind$FactorA, bind$FactorB,sep="&") # Change FactorA and FactorB --> the category you compare
 bind <- cbind (bind, category)
