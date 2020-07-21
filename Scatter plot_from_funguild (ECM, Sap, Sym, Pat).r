@@ -49,14 +49,13 @@ Result <- cbind (ECM, Saprotroph,Symbiotroph, Pathotroph)
 write.csv(Result, "aggregated.funguild.table.csv")
 
 data <- cbind (Result, DESIGN)
-data$Urban <- factor (data$Urban, levels=c("Urban","Rural"))
 for (i in 1:ncol(Result)){
 ggplot(data)+
-geom_point(aes(x=DFE, y=data[,i], color=Urban))+ 
-geom_smooth(method="lm", aes(x=DFE, y=data[,i], group=Urban, color=Urban))+  
+geom_point(aes(x=Factor1, y=data[,i], color=Factor2))+ #Change Factor 1 and 2 
+geom_smooth(method="lm", aes(x=Factor1, y=data[,i], group=Factor2, color=Factor2))+  #Change Factor 1 and 2
 # scale_fill_manual(values = c("#C77CFF","#7CAE00","#00BFC4","#F8766D"))+  # if you want to change the colors
 theme_classic()+
 theme(text=element_text(size=14,color="black"),axis.text=element_text(size=12,color="black"))+
-labs (y=paste(colnames(data)[i], "(%)",sep = " "), x="Distance from edge (m)") # if you want to change the axis titles
+labs (y=paste(colnames(data)[i], "(%)",sep = " "), x="") # if you want to change the axis titles
 
 ggsave(paste(colnames(data)[i],".png"),width = 5, height = 4)}
