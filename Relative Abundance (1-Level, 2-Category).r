@@ -53,7 +53,7 @@ bind <- cbind(FactorA, FactorB, Abundance, Example)
 data<-rbind (data,bind)}
 data$Abundance <- as.numeric(as.character(data$Abundance))
 
-rownames<-rownames(selected)[nrow(selected):1]
+rownames<-colnames(table)[ncol(table):3]
 data$Example <- factor(data$Example, levels = rownames)
 data <- na.omit(data)
 
