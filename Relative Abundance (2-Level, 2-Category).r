@@ -85,7 +85,7 @@ bind <- cbind(FactorA, FactorB, Abundance, Example)  # Change FactorA and Factor
 data<-rbind (data,bind)}
 data$Abundance <- as.numeric(as.character(data$Abundance))
 
-rownames<-rownames(phylum.class.table)[nrow(phylum.class.table):1]
+rownames<-colnames(table)[ncol(table):3]
 data$Example <- factor(data$Example, levels = rownames)
 
 # ggplot
