@@ -22,7 +22,7 @@ all.equal(rownames(sel.tax), rownames(percent.pval))
 
 p.yes <- percent.cor$P<0.05
 r.yes <- percent.cor$r>0
-r.high <- percent.cor$r>0.7
+r.high <- percent.cor$r>0.6
 r.val = percent.cor$r # select all the correlation values 
 p.r.yes = p.yes*r.yes*r.val*r.high
 adjm<-p.r.yes 
