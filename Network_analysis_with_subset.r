@@ -18,7 +18,7 @@ subset <- subset(subset, subset$Factor2=="a") # Change
 
 subset <- subset[,1:(ncol(subset)-ncol(DESIGN))]
 
-subset.t.filter <- subset[ ,colMeans(subset) >= 0.1]
+subset.t.filter <- subset[ ,colMeans(subset) >= 0.01]
 print(c(ncol(subset),"versus",ncol(subset.t.filter)))
 
 percent.cor <- rcorr(as.matrix(subset.t.filter), type="spearman")
