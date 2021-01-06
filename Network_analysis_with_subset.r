@@ -42,11 +42,11 @@ net.grph=graph.adjacency(adjm,mode="undirected",weighted=TRUE,diag=FALSE)
 # pr <- page.rank(net.grph,directed=F)$vector　
 deg <- degree(net.grph, mode="all")　
 
-col=rainbow(length(levels(taxonomy$Phylum)))
-plot.igraph(net.grph, vertex.size=deg*0.15,vertex.label=NA, vertex.color=col[unclass(taxonomy$Phylum)],layout=layout.kamada.kawai)
-# plot(net.grph, vertex.size=deg*0.15,vertex.label=NA,vertex.color=col[unclass(taxonomy$Phylum)],layout=layout.random)
-# plot(net.grph, vertex.size=deg*0.15,vertex.label=NA,vertex.color=col[unclass(taxonomy$Phylum)],layout=layout.fruchterman.reingold)
-legend(x = "bottomleft", legend = levels(taxonomy$Phylum), pch = 19, col = col, bty = "n", pt.cex=2, title = "Color legend")
+col=rainbow(length(levels(sel.tax$Phylum)))
+plot.igraph(net.grph, vertex.size=deg*0.15,vertex.label=NA, vertex.color=col[unclass(sel.tax$Phylum)],layout=layout.kamada.kawai)
+# plot(net.grph, vertex.size=deg*0.15,vertex.label=NA,vertex.color=col[unclass(sel.tax$Phylum)],layout=layout.random)
+# plot(net.grph, vertex.size=deg*0.15,vertex.label=NA,vertex.color=col[unclass(sel.tax$Phylum)],layout=layout.fruchterman.reingold)
+legend(x = "bottomleft", legend = levels(sel.tax$Phylum), pch = 19, col = col, bty = "n", pt.cex=2, title = "Color legend")
 
 gsize <- gsize(net.grph)
 edge_density <- round(edge_density(net.grph),digit=5)
