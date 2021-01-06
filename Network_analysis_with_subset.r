@@ -12,7 +12,7 @@ taxonomy <- ASV.table [,(ncol(ASV.table)-6):ncol(ASV.table)]
 percent <- ASV / mean(colSums(ASV)) *100
 percent.t <- t(percent)
 
-percent.t.filter <- percent.t[ ,colSums(percent.t) >= 0.1]
+percent.t.filter <- percent.t[ ,colMeans(percent.t) >= 0.1]
 print(c(ncol(percent.t),"versus",ncol(percent.t.filter)))
 
 bind <- cbind (percent.t.filter,DESIGN)
