@@ -43,8 +43,7 @@ net.grph=graph.adjacency(adjm,mode="undirected",weighted=TRUE,diag=FALSE)
 deg <- degree(net.grph, mode="all")　
 
 col=rainbow(length(levels(sel.tax$Phylum)))
-# plot.igraph(net.grph, vertex.size=deg*0.15,vertex.label=NA, vertex.color=col[unclass(sel.tax$Phylum)],layout=layout.kamada.kawai)
-plot.igraph(net.grph, vertex.size=0.15,vertex.label=NA, vertex.color=col[unclass(sel.tax$Phylum)],layout=layout.kamada.kawai)
+plot.igraph(net.grph, vertex.size=deg*0.15,vertex.label=NA, vertex.color=col[unclass(sel.tax$Phylum)],layout=layout.kamada.kawai)
 # plot(net.grph, vertex.size=deg*0.15,vertex.label=NA,vertex.color=col[unclass(sel.tax$Phylum)],layout=layout.random)
 # plot(net.grph, vertex.size=deg*0.15,vertex.label=NA,vertex.color=col[unclass(sel.tax$Phylum)],layout=layout.fruchterman.reingold)
 legend(x = "bottomleft", legend = levels(sel.tax$Phylum), pch = 19, col = col, bty = "n", pt.cex=2, title = "Color legend")
