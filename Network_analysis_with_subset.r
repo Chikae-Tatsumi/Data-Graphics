@@ -16,8 +16,8 @@ percent.t.filter <- percent.t[ ,colSums(percent.t) >= 0.1]
 print(c(ncol(percent.t),"versus",ncol(percent.t.filter)))
 
 bind <- cbind (percent.t.filter,DESIGN)
-subset <- subset(bind, bind$Factor1=="0") # Change
-subset <- subset(subset, bind$UorR=="Urban") # Change
+subset <- subset(bind, bind$Factor1=="A") # Change
+subset <- subset(subset, bind$Factor2=="a") # Change
 
 subset.t.filter <- subset[,1:(ncol(subset)-ncol(DESIGN))]
 
