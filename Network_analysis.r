@@ -34,8 +34,6 @@ net.grph=graph.adjacency(adjm,mode="undirected",weighted=TRUE,diag=FALSE)
 # pr <- page.rank(net.grph,directed=F)$vector　
 deg <- degree(net.grph, mode="all")　
 
-png("network.png", 1000, 1000) # define pixel
-
 col=rainbow(length(levels(taxonomy$Phylum)))
 plot.igraph(net.grph, vertex.size=deg*0.15,vertex.label=NA, vertex.color=col[unclass(taxonomy$Phylum)],layout=layout.kamada.kawai)
 # plot(net.grph, vertex.size=deg*0.15,vertex.label=NA,vertex.color=col[unclass(taxonomy$Phylum)],layout=layout.random)
@@ -47,4 +45,4 @@ edge_density <- round(edge_density(net.grph),digit=5)
 text(x=1,y=-1,paste("The number of edge = ", gsize))
 text(x=1,y=-1.1,paste("edge density = ", edge_density))
 
-# Save 
+# Save as you like
