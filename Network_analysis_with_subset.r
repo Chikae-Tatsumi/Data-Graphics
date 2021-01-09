@@ -12,7 +12,6 @@ taxonomy <- ASV.table [,(ncol(ASV.table)-6):ncol(ASV.table)]
 percent <- ASV / mean(colSums(ASV)) *100
 percent.t <- t(percent)
 
-
 # To make minor phylum "Others"
 phylum <- aggregate(percent, by=list(taxonomy$Phylum),FUN = sum,na.rm=F) 
 row.names(phylum)<-phylum[,1]
