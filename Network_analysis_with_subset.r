@@ -13,6 +13,9 @@ percent <- ASV / mean(colSums(ASV)) *100
 percent.t <- t(percent)
 
 # To make minor phylum "Others"
+taxonomy.minusp <- data.frame(lapply(taxonomy, function(x){gsub(pattern="p__", replacement = "", x)}),stringsAsFactors = FALSE)
+rownames(taxonomy.minusp) <- rownames(taxonomy)
+taxonomy <- taxonomy.minusp
 phylum <- aggregate(percent, by=list(taxonomy$Phylum),FUN = sum,na.rm=F) 
 row.names(phylum)<-phylum[,1]
 phylum <- phylum[,-1]
@@ -63,12 +66,16 @@ deg <- degree(net.grph, mode="all")　
 sel.tax$Phylum <- factor(sel.tax$Phylum)
 others.n <- which(levels(sel.tax$Phylum)=="Others")
 levels <- NULL
+if (others.n == 1){
+    for (i in 1:(length(levels(sel.tax$Phylum)))){
+    levels <- c(levels, levels(sel.tax$Phylum)[i])}
+    levels <- c(levels, "Others")}else{
 for (i in 1:(others.n-1)){
     levels <- c(levels, levels(sel.tax$Phylum)[i])}
 for (i in (others.n+1):(length(levels(sel.tax$Phylum)))){
     levels <- c(levels, levels(sel.tax$Phylum)[i])}
 levels <- c(levels, "Others")
-levels(sel.tax$Phylum) <- levels
+levels(sel.tax$Phylum) <- levels}
 
 # Illustrate
 col=rainbow(length(levels(sel.tax$Phylum)))
