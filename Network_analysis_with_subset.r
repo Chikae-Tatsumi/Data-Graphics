@@ -30,8 +30,8 @@ taxonomy$Phylum <- gsub(minor.phylum.list[i],"Others",taxonomy$Phylum)}
 
 # Subset
 bind <- cbind (percent.t,DESIGN)
-subset <- subset(bind, bind$Urban=="Urban") # Change
-subset <- subset(subset, subset$Edge=="Edge") # Change
+subset <- subset(bind, bind$Urban=="AAA") # Change
+subset <- subset(subset, subset$Edge=="aaa") # Change
 
 subset <- subset[,1:(ncol(subset)-ncol(DESIGN))]
 
